@@ -49,33 +49,43 @@ void receive(){
         break;
        case IR_BUTTON_0: 
         Serial.println("Press 0."); 
+        endpoint = 0;
         break;
        case IR_BUTTON_1: 
         Serial.println("Press 1."); 
+        endpoint = 1;
         break;
        case IR_BUTTON_2: 
         Serial.println("Press 2."); 
+        endpoint = 2;
         break;
        case IR_BUTTON_3: 
         Serial.println("Press 3."); 
+        endpoint = 3;
         break;
        case IR_BUTTON_4: 
         Serial.println("Press 4."); 
+        endpoint = 4;
         break;
        case IR_BUTTON_5: 
         Serial.println("Press 5."); 
+        endpoint = 5;
         break;
        case IR_BUTTON_6: 
         Serial.println("Press 6."); 
+        endpoint = 6;
         break;
        case IR_BUTTON_7: 
         Serial.println("Press 7."); 
+        endpoint = 7;
         break;
        case IR_BUTTON_8: 
         Serial.println("Press 8."); 
+        endpoint = 8;
         break;
        case IR_BUTTON_9: 
         Serial.println("Press 9."); 
+        endpoint = 9;
         break;
        default: break;
     }
