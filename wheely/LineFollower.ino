@@ -65,7 +65,7 @@ void countLine(){
       if(!insideCheckpointLine){
         checkpointCounter++;
         if(checkpointCounter = endpoint){
-          spin = true;
+          isSpin = true;
         }
       }
       insideCheckpointLine = true;
