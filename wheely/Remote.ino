@@ -1,18 +1,3 @@
-
-
-// grappler
-// Arm = Arm (oben unten)
-//MeDCMotor arm(PORT_1);
-// Nipper = Zange (auf zu)
-//MeDCMotor nip(PORT_2);
-// Hand = Handgelenk (links rechts)
-//MeDCMotor hand(PORT_3);
-
-// grappler
-int armSpeed = 250;
-int nipSpeed = 250;
-int handSpeed = 250;
-
 void receive(){
   uint8_t buttonState;
   static uint8_t PrebuttonState = 0;
@@ -113,37 +98,5 @@ void receive(){
   }else{
     stop();
   }
-}
-
-void stop()
-{
-  arm.run(0);
-  nip.run(0);
-  hand.run(0);
-}
-
-// Arm
-void arm_up(){
-  arm.run(armSpeed);
-}
-void arm_down(){
-  arm.run(-armSpeed);
-}
-
-// Zange
-void nip_close(){
-  nip.run(nipSpeed);
-}
-void nip_open(){
-  nip.run(-nipSpeed);
-}
-
-// Handgelenk
-// !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
-void hand_right(){
-  hand.run(handSpeed);
-}
-void hand_left(){
-  hand.run(-handSpeed);
 }
 

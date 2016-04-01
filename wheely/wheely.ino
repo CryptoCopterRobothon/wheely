@@ -19,11 +19,23 @@ uint8_t ReceiverCode;
 uint8_t buttonState;
 static uint8_t PrebuttonState = 0;
 
+// grappler
+int armSpeed = 250;
+int nipSpeed = 250;
+int handSpeed = 250;
+
 MeDCMotor motor_right(PORT1);
 MeDCMotor motor_left(PORT2);
 MeLineFollower lineFinder(PORT_3);
 MeLineFollower lineCounter(PORT_4);
 MeInfraredReceiver infraredReceiverDecode(PORT_6);
+// grappler
+// Arm = Arm (oben unten)
+MeDCMotor arm(M1);
+// Nipper = Zange (auf zu)
+MeDCMotor nip(M2);
+// Hand = Handgelenk (links rechts)
+MeDCMotor hand(PORT_5);
 
 
 void setup() {
@@ -34,7 +46,9 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   receive();
-  if(checkpoint != endpoint){
+  if(checkpointCounter != endpoint){
     followLine();
+  }else{
+    Motors(0,0);
   }
 }
