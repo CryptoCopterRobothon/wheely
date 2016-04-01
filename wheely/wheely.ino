@@ -1,4 +1,5 @@
 #include "MeOrion.h"
+//#include <SoftwareSerial.h>
 
 /*
  * 0: innerhalb
@@ -6,7 +7,9 @@
  * 2: links
  * 3: außerhalb
  */
- int lineDirection = 0;
+int lineDirection = 0;
+
+uint8_t checkpointCounter = 0;
 
 MeDCMotor motor_right(PORT1);
 MeDCMotor motor_left(PORT2);
