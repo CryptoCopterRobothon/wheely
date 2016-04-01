@@ -21,3 +21,11 @@ void SetMotors(bool dir_left, bool dir_right) {
   Motors(left, right);
 }
 
+void Spin(uint8_t spin_direction, uint8_t spin_amount) {
+  for(uint8_t spin_count = 0; spin_count < spin_amount; spin_count++) {
+    if(spin_direction) {
+      
+    }
+  }
+}
+
