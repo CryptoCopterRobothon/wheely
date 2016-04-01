@@ -9,9 +9,6 @@
  */
 uint8_t lineDirection = 0;
 uint8_t motor_default = 20;
-
-
-10
 uint8_t left = 0;
 uint8_t right = 0;
 uint8_t checkpointCounter = 0;
