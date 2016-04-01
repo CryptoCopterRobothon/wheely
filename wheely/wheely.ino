@@ -1,8 +1,17 @@
 #include "MeOrion.h"
 
+/*
+ * 0: innerhalb
+ * 1: rechts
+ * 2: links
+ * 3: außerhalb
+ */
+ int lineDirection = 0;
+
 MeDCMotor motor_right(PORT1);
 MeDCMotor motor_left(PORT2);
 MeLineFollower lineFinder(PORT_3);
+
 
 void setup() {
   // put your setup code here, to run once:
