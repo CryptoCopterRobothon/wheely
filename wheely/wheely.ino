@@ -6,7 +6,10 @@
  * 2: links
  * 3: außerhalb
  */
- int lineDirection = 0;
+ uint8_t lineDirection = 0;
+ uint8_t motor_default = 20;
+ uint8_t left = 0;
+ uint8_t right = 0;
 
 MeDCMotor motor_right(PORT1);
 MeDCMotor motor_left(PORT2);

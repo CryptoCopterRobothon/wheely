@@ -1,15 +1,23 @@
-void Motors(bool left, bool right) {
+void Motors(left, right) {
+  motor_left.run(left);
+  motor_right.run(right);
+}
+
+void SetMotors(bool dir_left, bool dir_right) {
   if(left) {
-    motor_left.run(20);
-    motor_right.run(0);
+    if(left < motor_default) {
+      left++;
+    }else if(right > motor_default) {
+      right--;
+    }
   }
   if(right) {
-    motor_right.run(20);
-    motor_left.run(0);
+    if(right < motor_default) {
+      right++;
+    }else if(left > motor_default) {
+      left--;
+    }
   }
-  if(!left && !right){
-    motor_right.run(0);
-    motor_left.run(0);
-  }
+  Motors(left
 }
 

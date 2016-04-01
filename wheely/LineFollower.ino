@@ -12,9 +12,9 @@ void followLine(){
       Motors(1,0);
       lineDirection = 1;
       break;
-    case S1_OUT_S2_IN: 
+    case S1_OUT_S2_IN:
       Serial.println("Sensor 1 is outside of black line"); 
-      Motors(0,1); 
+      Motors(0,1);
       lineDirection = 2;
       break;
     case S1_OUT_S2_OUT: 
