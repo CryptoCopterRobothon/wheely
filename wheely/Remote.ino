@@ -1,3 +1,22 @@
+#include <Makeblock.h>
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <Wire.h>
+
+// grappler
+// Arm = Arm (oben unten)
+MeDCMotor arm(PORT_1);
+// Nipper = Zange (auf zu)
+MeDCMotor nip(PORT_2);
+// Hand = Handgelenk (links rechts)
+MeDCMotor hand(PORT_3);
+MeInfraredReceiver infraredReceiverDecode(PORT_5);
+
+// grappler
+int armSpeed = 250;
+int nipSpeed = 250;
+int handSpeed = 250;
+
 void receive(){
   uint8_t buttonState;
   static uint8_t PrebuttonState = 0;
@@ -25,9 +44,11 @@ void receive(){
         break;
        case IR_BUTTON_D: 
         Serial.println("Press D."); 
+        nip_open();
         break;
        case IR_BUTTON_E: 
         Serial.println("Press E."); 
+        nip_close();
         break;
        case IR_BUTTON_F: 
         Serial.println("Press F."); 
@@ -37,15 +58,19 @@ void receive(){
         break;
        case IR_BUTTON_UP: 
         Serial.println("Press Up."); 
+        arm_up();
         break;
        case IR_BUTTON_DOWN: 
         Serial.println("Press Down."); 
+        arm_down();
         break;
        case IR_BUTTON_LEFT: 
         Serial.println("Press Left."); 
+        hand_left();
         break;
        case IR_BUTTON_RIGHT: 
         Serial.println("Press Right."); 
+        hand_right();
         break;
        case IR_BUTTON_0: 
         Serial.println("Press 0."); 
@@ -89,6 +114,40 @@ void receive(){
         break;
        default: break;
     }
+  }else{
+    stop();
   }
+}
+
+void stop()
+{
+  arm.run(0);
+  nip.run(0);
+  hand.run(0);
+}
+
+// Arm
+void arm_up(){
+  arm.run(armSpeed);
+}
+void arm_down(){
+  arm.run(-armSpeed);
+}
+
+// Zange
+void nip_close(){
+  nip.run(nipSpeed);
+}
+void nip_open(){
+  nip.run(-nipSpeed);
+}
+
+// Handgelenk
+// !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
+void hand_right(){
+  hand.run(handSpeed);
+}
+void hand_left(){
+  hand.run(-handSpeed);
 }
 
