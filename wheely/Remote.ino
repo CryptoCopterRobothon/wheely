@@ -1,3 +1,22 @@
+#include <Makeblock.h>
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <Wire.h>
+
+// Ganzer Greifarm
+// Arm = Arm (oben unten)
+MeDCMotor arm(PORT_1);
+// Grappler = Greifer (auf zu)
+MeDCMotor grap(PORT_2);
+// Hand = Handgelenk (links rechts)
+MeDCMotor hand(PORT_3);
+MeInfraredReceiver infraredReceiverDecode(PORT_5);
+
+// Ganzer Greifarm
+int armSpeed = 250;
+int grapSpeed = 250;
+int handSpeed = 250;
+
 void receive(){
   uint8_t buttonState;
   static uint8_t PrebuttonState = 0;
@@ -25,9 +44,11 @@ void receive(){
         break;
        case IR_BUTTON_D: 
         Serial.println("Press D."); 
+        grap_open();
         break;
        case IR_BUTTON_E: 
         Serial.println("Press E."); 
+        grap_close();
         break;
        case IR_BUTTON_F: 
         Serial.println("Press F."); 
@@ -37,15 +58,19 @@ void receive(){
         break;
        case IR_BUTTON_UP: 
         Serial.println("Press Up."); 
+        arm_up();
         break;
        case IR_BUTTON_DOWN: 
         Serial.println("Press Down."); 
+        arm_down();
         break;
        case IR_BUTTON_LEFT: 
         Serial.println("Press Left."); 
+        hand_left();
         break;
        case IR_BUTTON_RIGHT: 
         Serial.println("Press Right."); 
+        hand_right();
         break;
        case IR_BUTTON_0: 
         Serial.println("Press 0."); 
@@ -79,6 +104,40 @@ void receive(){
         break;
        default: break;
     }
+  }else{
+    stop();
   }
+}
+
+void stop()
+{
+  arm.run(0);
+  grap.run(0);
+  hand.run(0);
+}
+
+// Arm
+void arm_up(){
+  arm.run(armSpeed);
+}
+void arm_down(){
+  arm.run(-armSpeed);
+}
+
+// Greifer
+void grap_close(){
+  grap.run(grapSpeed);
+}
+void grap_open(){
+  grap.run(-grapSpeed);
+}
+
+// Handgelenk
+// !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
+void hand_right(){
+  hand.run(grapSpeed);
+}
+void hand_left(){
+  hand.run(-grapSpeed);
 }
 
