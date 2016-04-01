@@ -41,6 +41,7 @@ void countLine(){
   int sensorState = lineCounter.readSensors();
   switch(sensorState)
   {
+    /*
     case S1_IN_S2_IN: 
       Serial.println("Sensor 1 and 2 are inside of black line"); 
       
@@ -53,11 +54,22 @@ void countLine(){
       Serial.println("Sensor 1 is outside of black line"); 
       
       break;
+    */
     case S1_OUT_S2_OUT: 
-      Serial.println("Sensor 1 and 2 are outside of black line");
+      Serial.println("Sensor 1 and 2 are outside of black line"); 
+      insideCheckpointLine = false;
       
       break;
-    default: break;
+    default:  
+      Serial.println("At least one Sensor is inside of black line");
+      if(!insideCheckpointLine){
+        checkpointCounter++;
+        if(checkpointCounter = endpoint){
+          spin = true;
+        }
+      }
+      insideCheckpointLine = true;
+      break;
   }
 }
 
