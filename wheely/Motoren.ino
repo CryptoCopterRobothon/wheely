@@ -32,13 +32,13 @@ void spin(bool spin_direction, uint8_t spin_amount) {
     Serial.println("Spin right entered");
     motor_left.run(20);
     motor_right.run(-20);
-    while(getAngle() <
+    delay(2000)
     motor_left.run(0);
     motor_right.run(0);
   }else {                 //Spin left
     motor_left.run(-20);
     motor_right.run(20);
-    delay(1000);
+    delay(2000);
     motor_left.run(0);
     motor_right.run(0);
   }

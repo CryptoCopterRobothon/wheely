@@ -57,25 +57,25 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-#ifndef SPIN
   if(checkpointCounter != endpoint){
     if(!crosswise){
       followLine();
       receive();
     }else{
-      
+      if(checkpointCounter < endpoint){
+        spin(0,1);
+      }else{
+        spin(1,1);
+      }
     }
     
   }else{
     if(isSpin){
-      Motors(0,0);
+      spin(1,1);
     }else{
       receive();
     }
   }
 #endif
 
-//#ifdef SPIN
-  spin(1,1);
-//#endif
 }
