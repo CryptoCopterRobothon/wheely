@@ -1,6 +1,7 @@
 #include "MeOrion.h"
 
-MeDCMotor motor1(M1);
+MeDCMotor motor_right(PORT1);
+MeDCMotor motor_left(PORT2);
 MeLineFollower lineFinder(PORT_3);
 
 void setup() {
@@ -10,5 +11,5 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Motors(lineFinder.readSensors());
+  followLine();
 }
