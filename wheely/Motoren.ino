@@ -1,4 +1,4 @@
-void Motors(left, right) {
+void Motors(uint8_t speed_left, uint8_t speed_right) {
   motor_left.run(left);
   motor_right.run(right);
 }
@@ -18,6 +18,6 @@ void SetMotors(bool dir_left, bool dir_right) {
       left--;
     }
   }
-  Motors(left
+  Motors(left, right);
 }
 
