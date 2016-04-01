@@ -1,5 +1,6 @@
 #include "MeOrion.h"
 #include <SoftwareSerial.h>
+#include <Wire.h>
 
 /*
  * 0: innerhalb
@@ -32,6 +33,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  receive();
   if(checkpoint != endpoint){
     followLine();
   }

@@ -1,16 +1,12 @@
-#include <Makeblock.h>
-#include <Arduino.h>
-#include <SoftwareSerial.h>
-#include <Wire.h>
+
 
 // grappler
 // Arm = Arm (oben unten)
-MeDCMotor arm(PORT_1);
+//MeDCMotor arm(PORT_1);
 // Nipper = Zange (auf zu)
-MeDCMotor nip(PORT_2);
+//MeDCMotor nip(PORT_2);
 // Hand = Handgelenk (links rechts)
-MeDCMotor hand(PORT_3);
-MeInfraredReceiver infraredReceiverDecode(PORT_5);
+//MeDCMotor hand(PORT_3);
 
 // grappler
 int armSpeed = 250;
