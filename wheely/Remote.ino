@@ -3,18 +3,18 @@
 #include <SoftwareSerial.h>
 #include <Wire.h>
 
-// Ganzer Greifarm
+// grappler
 // Arm = Arm (oben unten)
 MeDCMotor arm(PORT_1);
-// Grappler = Greifer (auf zu)
-MeDCMotor grap(PORT_2);
+// Nipper = Zange (auf zu)
+MeDCMotor nip(PORT_2);
 // Hand = Handgelenk (links rechts)
 MeDCMotor hand(PORT_3);
 MeInfraredReceiver infraredReceiverDecode(PORT_5);
 
-// Ganzer Greifarm
+// grappler
 int armSpeed = 250;
-int grapSpeed = 250;
+int nipSpeed = 250;
 int handSpeed = 250;
 
 void receive(){
@@ -44,11 +44,11 @@ void receive(){
         break;
        case IR_BUTTON_D: 
         Serial.println("Press D."); 
-        grap_open();
+        nip_open();
         break;
        case IR_BUTTON_E: 
         Serial.println("Press E."); 
-        grap_close();
+        nip_close();
         break;
        case IR_BUTTON_F: 
         Serial.println("Press F."); 
@@ -112,7 +112,7 @@ void receive(){
 void stop()
 {
   arm.run(0);
-  grap.run(0);
+  nip.run(0);
   hand.run(0);
 }
 
@@ -124,20 +124,20 @@ void arm_down(){
   arm.run(-armSpeed);
 }
 
-// Greifer
-void grap_close(){
-  grap.run(grapSpeed);
+// Zange
+void nip_close(){
+  nip.run(nipSpeed);
 }
-void grap_open(){
-  grap.run(-grapSpeed);
+void nip_open(){
+  nip.run(-nipSpeed);
 }
 
 // Handgelenk
 // !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
 void hand_right(){
-  hand.run(grapSpeed);
+  hand.run(handSpeed);
 }
 void hand_left(){
-  hand.run(-grapSpeed);
+  hand.run(-handSpeed);
 }
 
