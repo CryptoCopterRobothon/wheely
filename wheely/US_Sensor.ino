@@ -8,7 +8,7 @@ void ussensor(){
   if(dist < 10){
     nip_close();
   }else if(dist > 11) {
-    if(dist > 30){
+    if(dist < 30){
       nip_open();
     }else{
       nip.run(0);
