@@ -2,7 +2,7 @@
 #include <SoftwareSerial.h>
 #include <Wire.h>
 
-#define SPIN
+//#define SPIN
 
 /*
  * 0: innerhalb
@@ -67,7 +67,7 @@ void loop() {
   }
 #endif
 
-//#ifdef SPIN
+#ifdef SPIN
   spin(1,1);
-//#endif
+#endif
 }
