@@ -11,7 +11,7 @@
  * 3: außerhalb
  */
 uint8_t lineDirection = 0;
-uint8_t motor_default = 20;
+uint8_t motor_default = 40;
 uint8_t left = 0;
 uint8_t right = 0;
 uint8_t checkpointCounter = 0;
@@ -49,15 +49,13 @@ MeDCMotor hand(PORT_5);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  Serial.println("Initializing I2C devices...");
-  Compass.begin();
-  Serial.println("Testing device connections...");
-  Serial.println(Compass.testConnection() ? "HMC5883L connection successful" : "HMC5883L connection failed");
+  infraredReceiverDecode.begin();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   if(checkpointCounter != endpoint){
+   // Serial.println("testprint");
     if(!crosswise){
       followLine();
       receive();
@@ -76,6 +74,4 @@ void loop() {
       receive();
     }
   }
-#endif
-
 }

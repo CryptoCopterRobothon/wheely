@@ -1,20 +1,20 @@
 void Motors(uint8_t speed_left, uint8_t speed_right) {
-  motor_left.run(left);
-  motor_right.run(right);
-  Serial.println(left); 
+  motor_left.run(speed_left);
+  motor_right.run(speed_right);
+  Serial.println(speed_left); 
   Serial.println("; ");
-  Serial.println(right);
+  Serial.println(speed_right);
 }
 
 void SetMotors(bool dir_left, bool dir_right) {
-  if(left) {
+  if(dir_right) {
     if(left < motor_default) {
       left++;
     }else if(right > motor_default) {
       right--;
     }
   }
-  if(right) {
+  if(dir_left) {
     if(right < motor_default) {
       right++;
     }else if(left > motor_default) {
@@ -27,19 +27,22 @@ void SetMotors(bool dir_left, bool dir_right) {
 void spin(bool spin_direction, uint8_t spin_amount) {
   Serial.println("Spin entered");
   Serial.println("Spin for loop entered");
-  double angle_start = getAngle();
   if(spin_direction) {    //Spin right
     Serial.println("Spin right entered");
     motor_left.run(20);
     motor_right.run(-20);
-    delay(2000)
+    delay(2000);
     motor_left.run(0);
     motor_right.run(0);
+    isSpin = false;
+    crosswise = !crosswise;
   }else {                 //Spin left
     motor_left.run(-20);
     motor_right.run(20);
     delay(2000);
     motor_left.run(0);
     motor_right.run(0);
+    isSpin = false;
+    crosswise = !crosswise;
   }
 }
