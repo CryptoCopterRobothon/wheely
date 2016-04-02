@@ -6,7 +6,11 @@ void ussensor(){
   Serial.println("Distanz: ");
   Serial.println(dist);
   if(dist < 10){
-    nip_close();
+    if(dist > 0){
+      nip_close();
+    }else{
+      nip.run(0);
+    }
   }else if(dist > 11) {
     if(dist < 30){
       nip_open();
