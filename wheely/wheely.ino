@@ -2,8 +2,6 @@
 #include <SoftwareSerial.h>
 #include <Wire.h>
 
-//#define SPIN
-
 /*
  * 0: innerhalb
  * 1: rechts
@@ -17,10 +15,6 @@ uint8_t right = 0;
 uint8_t checkpointCounter = 0;
 uint8_t endpoint = 0;
 bool insideCheckpointLine = false;
-bool crosswise = false;
-double standardAngle;
-bool isSpin = false;
-
 //Remote
 uint8_t ReceiverCode;
 uint8_t buttonState;
@@ -31,8 +25,8 @@ int armSpeed = 250;
 int nipSpeed = 250;
 int handSpeed = 250;
 
-MeDCMotor motor_right(M1);
-MeDCMotor motor_left(M2);
+MeDCMotor motor_right(PORT1);
+MeDCMotor motor_left(PORT2);
 MeLineFollower lineFinder(PORT_3);
 MeLineFollower lineCounter(PORT_4);
 MeInfraredReceiver infraredReceiverDecode(PORT_6);
@@ -54,6 +48,13 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   
+  if(checkpointCounter != endpoint){
+    followLine();
+    receive();
+  }else{
+    if(spin){
+      Motors(0,0);
+
   Serial.print("Ende: ");
   Serial.println(endpoint);
   Serial.print("check: ");
