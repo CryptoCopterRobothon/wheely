@@ -15,10 +15,10 @@ void arm_down(){
 
 // Zange
 void nip_close(){
-  nip.run(-nipSpeed);
+  nip.run(nipSpeed);
 }
 void nip_open(){
-  nip.run(nipSpeed);
+  nip.run(+nipSpeed);
 }
 
 // !!!!!!!!!!!!!!!! MOTOR
@@ -31,7 +31,7 @@ void hand_right(){
   }
   Serial.println(handAngle);
   myservo1.write(handAngle);
-  delay(500);
+  delay(200);
 }
 void hand_left(){
   handAngle--;
@@ -40,5 +40,5 @@ void hand_left(){
   }
   Serial.println(handAngle);
   myservo1.write(handAngle);
-  delay(500);
+  delay(200);
 }

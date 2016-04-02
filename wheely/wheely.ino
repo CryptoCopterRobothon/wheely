@@ -31,20 +31,20 @@ int handAngle = 0;
 
 MeDCMotor motor_right(PORT1);
 MeDCMotor motor_left(PORT2);
-MeLineFollower lineFinder(PORT_3);
-MeLineFollower lineCounter(PORT_4);
-MeInfraredReceiver infraredReceiverDecode(PORT_6);
+MeLineFollower lineFinder(PORT_7);
+MeLineFollower lineCounter(PORT6);
+MeInfraredReceiver infraredReceiverDecode(PORT_5);
 // grappler
 // Arm = Arm (oben unten)
 MeDCMotor arm(M1);
 // Nipper = Zange (auf zu)
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
-MePort port(PORT_5);
+MePort port(PORT_3);
 Servo myservo1;
 int16_t servo1pin = port.pin2();
-MeJoystick joystick(PORT_7);
-MeUltrasonicSensor ultraSensor(PORT_8);
+MeJoystick joystick(PORT_8);
+MeUltrasonicSensor ultraSensor(PORT_4);
 
 
 void setup() {
