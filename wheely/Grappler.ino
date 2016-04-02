@@ -26,9 +26,15 @@ void nip_open(){
 // !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
 void hand_right(){
   handAngle++;
+  if(handAngle > 180){
+    handAngle = 180;
+  }
   hand.write(handAngle);
 }
 void hand_left(){
   handAngle--;
+  if(handAngle < -180){
+    handAngle = -180;
+  }
   hand.write(handAngle);
 }

@@ -41,8 +41,8 @@ MeDCMotor arm(M1);
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
 MePort handport(PORT_5);
-int16_t handpin = handport.pin1();
 Servo hand;
+int16_t handpin = handport.pin2();
 MeJoystick joystick(PORT_7);
 MeUltrasonicSensor ultraSensor(PORT_8);
 
@@ -56,18 +56,19 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
+  /*
   Serial.print("Ende: ");
   Serial.println(endpoint);
   Serial.print("check: ");
   Serial.println(checkpointCounter);
-
+*/
   if(checkpointCounter != endpoint){
    // Serial.println("testprint");
     if(!crosswise){
       //Serial.println("follow");
       followLine();
       receive();
+      joy_pos();
       countLine();
     }else{
       //Serial.println("Spin");
@@ -85,6 +86,7 @@ void loop() {
     }else{
       //Serial.println("Wait");
       receive();
+      joy_pos();
     }
   }
 }
