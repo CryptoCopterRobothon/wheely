@@ -1,7 +1,7 @@
 void receive(){
   uint8_t buttonState;
   static uint8_t PrebuttonState = 0;
-
+  //Serial.println("receive");
   buttonState = infraredReceiverDecode.buttonState();
   if(PrebuttonState != buttonState)
   {

@@ -4,17 +4,17 @@ void followLine(){
   {
     case S1_IN_S2_IN: 
       Serial.println("Sensor 1 and 2 are inside of black line"); 
-      SetMotors(0,0);
+      Motors(motor_default,motor_default);
       lineDirection = 0;
       break;
     case S1_IN_S2_OUT: 
       Serial.println("Sensor 2 is outside of black line"); 
-      SetMotors(1,0);
+      Motors(motor_default,0);
       lineDirection = 1;
       break;
     case S1_OUT_S2_IN:
       Serial.println("Sensor 1 is outside of black line"); 
-      SetMotors(0,1);
+      Motors(0,motor_default);
       lineDirection = 2;
       break;
     case S1_OUT_S2_OUT: 
@@ -25,10 +25,10 @@ void followLine(){
           SetMotors(0,0);
           break;
         case 1: //rechts
-          SetMotors(1,0); 
+          SetMotors(0,1); 
           break;
         case 2: //links
-          SetMotors(0,1); 
+          SetMotors(1,0); 
           break;
         default: break;
       }
