@@ -27,19 +27,19 @@ void SetMotors(bool dir_left, bool dir_right) {
 void spin(bool spin_direction, uint8_t spin_amount) {
   Serial.println("Spin entered");
   Serial.println("Spin for loop entered");
-  if(!spin_direction) {    //Spin right
+  if(!spin_direction) {    //Spin left
     Serial.println("Spin right entered");
-    motor_left.run(50);
-    motor_right.run(-50);
-    delay(5000);
+    motor_left.run(motor_default);
+    motor_right.run(-motor_default);
+    while(lineFinder.readSensors() != S1_IN_S2_IN);
     motor_left.run(0);
     motor_right.run(0);
     isSpin = false;
     crosswise = !crosswise;
-  }else {                 //Spin left
-    motor_left.run(-50);
-    motor_right.run(50);
-    delay(5000);
+  }else {                 //Spin right
+    motor_left.run(-motor_default);
+    motor_right.run(motor_default);
+    delay(3500);
     motor_left.run(0);
     motor_right.run(0);
     isSpin = false;
