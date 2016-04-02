@@ -1,9 +1,9 @@
 void joy_pos(){
 
-  x = joystick.readX();
-  y = joystick.readY();
-  angle = joystick.angle(); // unnötig
-  OffCenter = joystick.OffCenter(); // unnötig
+  uint16_t x = joystick.readX();
+  uint16_t y = joystick.readY();
+  //angle = joystick.angle(); // unnötig
+  //OffCenter = joystick.OffCenter(); // unnötig
 
   if(x > 20){
     hand_right();

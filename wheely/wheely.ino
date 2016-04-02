@@ -41,6 +41,8 @@ MeDCMotor arm(M1);
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
 MeDCMotor hand(PORT_5);
+MeJoystick joystick(PORT_7);
+MeUltrasonicSensor ultraSensor(PORT_8);
 
 
 void setup() {
