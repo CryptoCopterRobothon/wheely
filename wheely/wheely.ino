@@ -9,7 +9,7 @@
  * 3: außerhalb
  */
 uint8_t lineDirection = 0;
-uint8_t motor_default = 70;
+uint8_t motor_default = 100;
 uint8_t left = 0;
 uint8_t right = 0;
 uint8_t checkpointCounter = 0;
@@ -18,6 +18,7 @@ bool insideCheckpointLine = false;
 bool crosswise = false;
 double standardAngle;
 bool isSpin = false;
+bool allowedClose = true;
 
 //Remote
 uint8_t ReceiverCode;
@@ -26,25 +27,26 @@ static uint8_t PrebuttonState = 0;
 
 // grappler
 int armSpeed = 80;
-int nipSpeed = 80;
-int handAngle = 0;
+int nipSpeed = 100;
+int handAngle = 90;
 
-MeDCMotor motor_right(PORT1);
-MeDCMotor motor_left(PORT2);
-MeLineFollower lineFinder(PORT_7);
-MeLineFollower lineCounter(PORT6);
-MeInfraredReceiver infraredReceiverDecode(PORT_5);
+
+MeDCMotor motor_right(PORT_2);
+MeDCMotor motor_left(PORT_1);
+MeLineFollower lineFinder(PORT_6);
+MeLineFollower lineCounter(PORT_4);
+MeInfraredReceiver infraredReceiverDecode(PORT_3);
 // grappler
 // Arm = Arm (oben unten)
 MeDCMotor arm(M1);
 // Nipper = Zange (auf zu)
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
-MePort port(PORT_3);
+MePort port(PORT_5);
 Servo myservo1;
 int16_t servo1pin = port.pin2();
 MeJoystick joystick(PORT_8);
-MeUltrasonicSensor ultraSensor(PORT_4);
+MeUltrasonicSensor ultraSensor(PORT_7);
 
 
 void setup() {
@@ -62,6 +64,7 @@ void loop() {
   Serial.print("check: ");
   Serial.println(checkpointCounter);
 */
+//Serial.println(allowedClose);
   if(checkpointCounter != endpoint){
    // Serial.println("testprint");
     if(!crosswise){

@@ -24,11 +24,15 @@ void receive(){
         break;
        case IR_BUTTON_D: 
         Serial.println("Press D."); 
+        allowedClose = false;
         nip_open();
+        //delay(1000);
         break;
        case IR_BUTTON_E: 
         Serial.println("Press E."); 
+        allowedClose = true;
         nip_close();
+        //delay(1000);
         break;
        case IR_BUTTON_F: 
         Serial.println("Press F."); 

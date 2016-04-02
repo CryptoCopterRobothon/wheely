@@ -11,10 +11,10 @@ void joy_pos(){
   Serial.println(handAngle);
 */  
 
-  if(x > 20){
+  if(x < -20){
     Serial.println("Right");
     hand_right();
-  }else if(x < -20){
+  }else if(x > 20){
     Serial.println("Left");
     hand_left();
   }
