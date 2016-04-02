@@ -5,6 +5,7 @@ void stop()
   hand.run(0);
 }
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!! MOTOR
 // Arm
 void arm_up(){
   arm.run(armSpeed);
@@ -21,6 +22,7 @@ void nip_open(){
   nip.run(-nipSpeed);
 }
 
+// !!!!!!!!!!!!!!!! MOTOR
 // Handgelenk
 // !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
 void hand_right(){
