@@ -11,7 +11,7 @@
  * 3: außerhalb
  */
 uint8_t lineDirection = 0;
-uint8_t motor_default = 40;
+uint8_t motor_default = 50;
 uint8_t left = 0;
 uint8_t right = 0;
 uint8_t checkpointCounter = 0;
@@ -48,29 +48,40 @@ MeDCMotor hand(PORT_5);
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(57600);
   infraredReceiverDecode.begin();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
+  Serial.print("Ende: ");
+  Serial.println(endpoint);
+  Serial.print("check: ");
+  Serial.println(checkpointCounter);
+
   if(checkpointCounter != endpoint){
    // Serial.println("testprint");
     if(!crosswise){
+      //Serial.println("follow");
       followLine();
       receive();
+      countLine();
     }else{
+      //Serial.println("Spin");
       if(checkpointCounter < endpoint){
         spin(0,1);
       }else{
         spin(1,1);
       }
     }
-
+    
   }else{
     if(isSpin){
+      //Serial.println("Spin");
       spin(1,1);
     }else{
+      //Serial.println("Wait");
       receive();
     }
   }
