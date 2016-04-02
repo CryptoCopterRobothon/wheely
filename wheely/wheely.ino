@@ -35,14 +35,14 @@ MeDCMotor motor_right(PORT_2);
 MeDCMotor motor_left(PORT_1);
 MeLineFollower lineFinder(PORT_6);
 MeLineFollower lineCounter(PORT_4);
-MeInfraredReceiver infraredReceiverDecode(PORT_3);
+MeInfraredReceiver infraredReceiverDecode(PORT_5);
 // grappler
 // Arm = Arm (oben unten)
 MeDCMotor arm(M1);
 // Nipper = Zange (auf zu)
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
-MePort port(PORT_5);
+MePort port(PORT_3);
 Servo myservo1;
 int16_t servo1pin = port.pin2();
 MeJoystick joystick(PORT_8);

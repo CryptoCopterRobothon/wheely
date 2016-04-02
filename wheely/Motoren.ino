@@ -47,7 +47,7 @@ void spin(bool spin_direction, uint8_t spin_amount) {
   }else {                 //Spin right
     motor_left.run(-motor_default);
     motor_right.run(motor_default);
-    delay(3500);
+    delay(3000);
     motor_left.run(0);
     motor_right.run(0);
     isSpin = false;
