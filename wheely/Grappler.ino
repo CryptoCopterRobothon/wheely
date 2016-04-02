@@ -1,4 +1,4 @@
-void stop()
+void nip_stop()
 {
   arm.run(0);
   nip.run(0);
