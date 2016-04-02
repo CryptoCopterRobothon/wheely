@@ -64,7 +64,7 @@ void countLine(){
       Serial.println("At least one Sensor is inside of black line");
       if(!insideCheckpointLine){
         checkpointCounter++;
-        if(checkpointCounter = endpoint){
+        if(checkpointCounter == endpoint){
           isSpin = true;
         }
       }

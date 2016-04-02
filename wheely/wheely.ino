@@ -36,7 +36,6 @@ MeDCMotor motor_left(M2);
 MeLineFollower lineFinder(PORT_3);
 MeLineFollower lineCounter(PORT_4);
 MeInfraredReceiver infraredReceiverDecode(PORT_6);
-MeCompass Compass(PORT_7);
 // grappler
 // Arm = Arm (oben unten)
 MeDCMotor arm(M1);
