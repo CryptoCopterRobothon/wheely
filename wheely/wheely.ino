@@ -9,12 +9,16 @@
  * 3: außerhalb
  */
 uint8_t lineDirection = 0;
-uint8_t motor_default = 50;
+uint8_t motor_default = 70;
 uint8_t left = 0;
 uint8_t right = 0;
 uint8_t checkpointCounter = 0;
 uint8_t endpoint = 0;
 bool insideCheckpointLine = false;
+bool crosswise = false;
+double standardAngle;
+bool isSpin = false;
+
 //Remote
 uint8_t ReceiverCode;
 uint8_t buttonState;
@@ -48,13 +52,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   
-  if(checkpointCounter != endpoint){
-    followLine();
-    receive();
-  }else{
-    if(spin){
-      Motors(0,0);
-
   Serial.print("Ende: ");
   Serial.println(endpoint);
   Serial.print("check: ");
