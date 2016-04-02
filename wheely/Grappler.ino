@@ -2,7 +2,6 @@ void nip_stop()
 {
   arm.run(0);
   nip.run(0);
-  hand.run(0);
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! MOTOR
@@ -26,8 +25,10 @@ void nip_open(){
 // Handgelenk
 // !!!!!!!!!!!!!!!!!!!!!!!! kontrolle ob links und rechts nicht vertauscht!!!!! 
 void hand_right(){
-  hand.run(handSpeed);
+  handAngle++;
+  hand.write(handAngle);
 }
 void hand_left(){
-  hand.run(-handSpeed);
+  handAngle--;
+  hand.write(handAngle);
 }

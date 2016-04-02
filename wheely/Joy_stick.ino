@@ -9,8 +9,6 @@ void joy_pos(){
     hand_right();
   }else if(x < -20){
     hand_left();
-  }else{
-     hand.run(0);
   }
 
   if(y > 20){

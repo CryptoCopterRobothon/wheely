@@ -25,9 +25,9 @@ uint8_t buttonState;
 static uint8_t PrebuttonState = 0;
 
 // grappler
-int armSpeed = 250;
-int nipSpeed = 250;
-int handSpeed = 250;
+int armSpeed = 80;
+int nipSpeed = 80;
+int handAngle = 0;
 
 MeDCMotor motor_right(PORT1);
 MeDCMotor motor_left(PORT2);
@@ -40,7 +40,9 @@ MeDCMotor arm(M1);
 // Nipper = Zange (auf zu)
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
-MePort hand(PORT_5);
+MePort handport(PORT_5);
+int16_t handpin = handport.pin1();
+Servo hand;
 MeJoystick joystick(PORT_7);
 MeUltrasonicSensor ultraSensor(PORT_8);
 
@@ -49,6 +51,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(57600);
   infraredReceiverDecode.begin();
+  hand.attach(handpin);
 }
 
 void loop() {
