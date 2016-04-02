@@ -5,15 +5,17 @@ void joy_pos(){
   //angle = joystick.angle(); // unnötig
   //OffCenter = joystick.OffCenter(); // unnötig
 
-  Serial.print("x: ");
+/*  Serial.print("x: ");
   Serial.println(x);
   Serial.print("angle: ");
   Serial.println(handAngle);
-  
+*/  
 
   if(x > 20){
+    Serial.println("Right");
     hand_right();
   }else if(x < -20){
+    Serial.println("Left");
     hand_left();
   }
 

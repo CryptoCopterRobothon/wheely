@@ -40,9 +40,9 @@ MeDCMotor arm(M1);
 // Nipper = Zange (auf zu)
 MeDCMotor nip(M2);
 // Hand = Handgelenk (links rechts)
-MePort handport(PORT_5);
-Servo hand;
-int16_t handpin = handport.pin2();
+MePort port(PORT_5);
+Servo myservo1;
+int16_t servo1pin = port.pin2();
 MeJoystick joystick(PORT_7);
 MeUltrasonicSensor ultraSensor(PORT_8);
 
@@ -51,7 +51,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(57600);
   infraredReceiverDecode.begin();
-  hand.attach(handpin);
+  myservo1.attach(servo1pin);
 }
 
 void loop() {
@@ -69,6 +69,7 @@ void loop() {
       followLine();
       receive();
       joy_pos();
+      ussensor();
       countLine();
     }else{
       //Serial.println("Spin");
@@ -87,6 +88,7 @@ void loop() {
       //Serial.println("Wait");
       receive();
       joy_pos();
+      ussensor();
     }
   }
 }

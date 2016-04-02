@@ -15,10 +15,10 @@ void arm_down(){
 
 // Zange
 void nip_close(){
-  nip.run(nipSpeed);
+  nip.run(-nipSpeed);
 }
 void nip_open(){
-  nip.run(-nipSpeed);
+  nip.run(nipSpeed);
 }
 
 // !!!!!!!!!!!!!!!! MOTOR
@@ -29,12 +29,16 @@ void hand_right(){
   if(handAngle > 180){
     handAngle = 180;
   }
-  hand.write(handAngle);
+  Serial.println(handAngle);
+  myservo1.write(handAngle);
+  delay(500);
 }
 void hand_left(){
   handAngle--;
-  if(handAngle < -180){
-    handAngle = -180;
+  if(handAngle < 0){
+    handAngle = 0;
   }
-  hand.write(handAngle);
+  Serial.println(handAngle);
+  myservo1.write(handAngle);
+  delay(500);
 }
